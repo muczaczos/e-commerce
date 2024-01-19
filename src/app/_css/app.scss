@@ -99,17 +99,14 @@ h6 {
 }
 
 p {
-  margin: var(--base) 0;
-
-  @include mid-break {
-    margin: calc(var(--base) * .75) 0;
-  }
+  margin: 0;
 }
 
 ul,
 ol {
-  padding-left: var(--base);
-  margin: 0 0 var(--base);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 a {
