@@ -54,6 +54,10 @@ body {
   flex-flow: column;
 }
 
+.main {
+  flex: 1 1 auto;
+}
+
 ::selection {
   background: var(--theme-success-500);
   color: var(--color-base-800);
