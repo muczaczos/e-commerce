@@ -16,7 +16,7 @@ const HeaderComponent = ({ header }: { header: Header}) => {
   const pathname = usePathname()
 
   return (
-    <nav //add class hide when noHeaderFooterUrls includes proper pathname
+    <nav //add class 'hide' when noHeaderFooterUrls includes proper pathname
         className={[classes.header, noHeaderFooterUrls.includes(pathname) && classes.hide] 
         .filter(Boolean) //change array string to string and join space to it
         .join(' ')}> 
