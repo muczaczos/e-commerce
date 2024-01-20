@@ -7,6 +7,7 @@ import { noHeaderFooterUrls } from '../../../constants'
 import { Gutter } from '../../Gutter'
 import Image from 'next/image'
 import { inclusions } from '../../../constants'
+import Link from 'next/link'
 
 const FooterComponent = () => {
     const pathname = usePathname();
@@ -32,6 +33,18 @@ const FooterComponent = () => {
           ))}
         </ul>
       </Gutter>
+
+      <div className={classes.footer}>
+        <Gutter>
+          <div className={classes.wrap}>
+            <Link href="/">
+              <Image src="/logo-white.svg" alt="logo" 
+              width={170}
+              height={50} />
+            </Link>
+          </div>
+        </Gutter>
+      </div>
     </footer>
   )
 }
