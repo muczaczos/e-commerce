@@ -17,7 +17,7 @@ export default async function Login() {
   })
 
   return (
-    <section className={classes.ligin}>
+    <section className={classes.login}>
       <div className={classes.heroImg}>
         <Link href="/">
           <Image
