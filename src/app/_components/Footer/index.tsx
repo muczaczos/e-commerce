@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import { Footer } from '../../../payload/payload-types'
 import { fetchFooter } from '../../_api/fetchGlobals'
-
 import FooterComponent from './FooterComponent'
 
 export async function Footer() {
@@ -19,7 +18,7 @@ export async function Footer() {
 
   return (
     <>
-    <FooterComponent footer={footer} />
+      <FooterComponent footer={footer} />
     </>
   )
 }
