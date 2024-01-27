@@ -16,7 +16,7 @@ export const INITIAL_FILTER_DATA = {
     setSort: () => '',
 }
 
-const FilterContext = createContext(INITIAL_FILTER_DATA);
+const FilterContext = createContext<IContextType>(INITIAL_FILTER_DATA);
 
 export const FilterProider = ({children}: { children: React.
 ReactNode}) => {
