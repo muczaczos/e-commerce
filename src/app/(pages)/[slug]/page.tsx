@@ -39,8 +39,6 @@ export default async function Page({ params: { slug = 'home' } }) {
     })
 
     categories = await fetchDocs<Category>('categories')
-    console.log('dupa')
-    console.log(categories)
   } catch (error) {
     // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
     // so swallow the error here and simply render the page with fallback data where necessary
