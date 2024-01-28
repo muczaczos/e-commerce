@@ -11,13 +11,13 @@ export const Promotion = () => {
     seconds: 0,
   })
 
-  const targetDate = new Date()
-  targetDate.setDate(targetDate.getDate() + 3)
+  const targetDate = new Date('02.05.2024') //month day year
+  targetDate.setDate(targetDate.getDate())
+  const currentTime = new Date()
 
+  const timeDifference = Math.max(Number(targetDate) - Number(currentTime), 0)
   useEffect(() => {
     const timerInterval = setInterval(() => {
-      const currentTime = new Date()
-      const timeDifference = Math.max(Number(targetDate) - Number(currentTime), 0)
 
       const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
       const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
