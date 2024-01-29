@@ -9,6 +9,7 @@ import { Gutter } from '../../_components/Gutter'
 import Filters from './Filters'
 
 import classes from './index.module.scss'
+import { HR } from '../../_components/HR'
 
 const Products = async () => {
   const { isEnabled: isDraftMode } = draftMode()
@@ -40,6 +41,8 @@ const Products = async () => {
         <Filters />
         <Blocks blocks={page.layout} disableTopPadding={true} />
       </Gutter>
+
+      <HR />
     </div>
   )
 }
