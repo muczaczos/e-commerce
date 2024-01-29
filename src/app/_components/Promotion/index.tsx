@@ -11,8 +11,8 @@ export const Promotion = () => {
     seconds: 0,
   })
 
-  const targetDate = new Date()
-  targetDate.setDate(targetDate.getDate() + 3)
+  const targetDate = new Date('02.05.2024')
+  targetDate.setDate(targetDate.getDate())
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
