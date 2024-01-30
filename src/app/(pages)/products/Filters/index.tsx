@@ -18,8 +18,10 @@ const Filters = ({ categories }: { categories: Category[] }) => {
       const updatedCategories = categoryFilters.filter(id => id !== categoryId)
 
       setCategoryFilters(updatedCategories)
+      setSort(categoryId)
     } else {
       setCategoryFilters([...categoryFilters, categoryId])
+      setSort(categoryId)
     }
   }
 
