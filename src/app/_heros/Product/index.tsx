@@ -19,9 +19,9 @@ export const ProductHero: React.FC<{
     stripeProductID,
     title,
     categories,
+    price,
     meta: { image: metaImage, description } = {},
   } = product
-
   return (
     <Gutter className={classes.productHero}>
       <div className={classes.mediaWrapper}>
@@ -54,8 +54,8 @@ export const ProductHero: React.FC<{
             })}
           </div>
           <p className={classes.stock}>In stock</p>
-          <Price product={product} button={false} />
         </div>
+        <p>{product.price} Tu powinna być cena fuck</p>
       </div>
 
       <div className={classes.description}>
@@ -65,4 +65,5 @@ export const ProductHero: React.FC<{
       <AddToCartButton product={product} className={classes.addToCartButton} />
     </Gutter>
   )
+  
 }

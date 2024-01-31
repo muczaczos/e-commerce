@@ -6,10 +6,10 @@ import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import { Gutter } from '../../_components/Gutter'
+import { HR } from '../../_components/HR'
 import Filters from './Filters'
 
 import classes from './index.module.scss'
-import { HR } from '../../_components/HR'
 
 const Products = async () => {
   const { isEnabled: isDraftMode } = draftMode()
@@ -23,7 +23,7 @@ const Products = async () => {
     page = await fetchDoc<Page>({
       collection: 'pages',
       slug: 'products',
-      draft: isDraftMode, 
+      draft: isDraftMode,
       /*drafts allow you to build on top of versions functionality
         to make changes to your collection, documents and globals but
         publish only when you're ready. It allows you to check out
@@ -38,7 +38,7 @@ const Products = async () => {
   return (
     <div className={classes.container}>
       <Gutter className={classes.products}>
-        <Filters categories={categories}/>
+        <Filters categories={categories} />
         <Blocks blocks={page.layout} disableTopPadding={true} />
       </Gutter>
 
