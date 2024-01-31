@@ -55,7 +55,7 @@ export const ProductHero: React.FC<{
           </div>
           <p className={classes.stock}>In stock</p>
         </div>
-        <p>{product.price} Tu powinna być cena fuck</p>
+        <p>{price}</p>
       </div>
 
       <div className={classes.description}>
