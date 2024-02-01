@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Media } from '../../../_components/Media'
 
 import classes from './index.module.scss'
+import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 
 const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
   const [quantity, setQuantity] = useState(qty)
@@ -14,9 +15,10 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
   const decrementQty = () => {}
   const incrementQty = () => {}
   const enterQty = () => {}
-
+  var subtotal = 0; 
+  
   return (
-    <li className={classes.item}>
+    <li key={title} className={classes.item}>
       <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
         {!metaImage && <span>No image</span>}
         {metaImage && typeof metaImage !== 'string' && (
@@ -41,7 +43,7 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
             />
           </div>
 
-          <input 
+          <input
             type="text"
             className={classes.quantityInput}
             value={quantity}
@@ -58,6 +60,10 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
             />
           </div>
         </div>
+      </div>
+
+      <div className={classes.subtotalWrapper}>
+        <RemoveFromCartButton product={product} />
       </div>
     </li>
   )
