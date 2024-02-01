@@ -85,7 +85,8 @@
   gap: 60px;
 
   @include small-break {
-    justify-content: space-between;
     align-items: end;
+    justify-content: space-between;
+    flex-direction: row-reverse;
   }
 }
