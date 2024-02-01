@@ -1,6 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link'
+
+import { Media } from '../../../_components/Media'
 
 import classes from './index.module.scss'
 
@@ -13,7 +16,12 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
 
   return (
     <li className={classes.item}>
-      <h6>TITLE</h6>
+      <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
+        {!metaImage && <span>No image</span>}
+        {metaImage && typeof metaImage !== 'string' && (
+          <Media className={classes.media} imgClassName={classes.image} resource={metaImage} fill />
+        )}
+      </Link>
     </li>
   )
 }
