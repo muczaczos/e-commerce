@@ -61,6 +61,8 @@ export const CartPage: React.FC<{
                 <div className={classes.header}>
                   <p>Products</p>
                   <div className={classes.headerItemDetails}>
+                    <p></p>
+                    <p></p>
                     <p>Quantity</p>
                   </div>
                   <p className={classes.headerSubtotal}>Subtotal</p>
@@ -99,14 +101,24 @@ export const CartPage: React.FC<{
                 <div className={classes.row}>
                   <h6 className={classes.cartTotal}>Summary</h6>
                 </div>
-              </div>
 
-              <Button
-                className={classes.checkoutButton}
-                href={user ? '/checkout' : '/login?redirect=%2Fcheckout'}
-                label={user ? 'Checkout' : 'Login to checkout'}
-                appearance="primary"
-              />
+                <div className={classes.row}>
+                  <p className={classes.cartTotal}>Delivery Charge</p>
+                  <p className={classes.cartTotal}>$0</p>
+                </div>
+
+                <div className={classes.row}>
+                  <p className={classes.cartTotal}>Grand Total</p>
+                  <p className={classes.cartTotal}>$12000</p>
+                </div>
+
+                <Button
+                  className={classes.checkoutButton}
+                  href={user ? '/checkout' : '/login?redirect=%2Fcheckout'}
+                  label={user ? 'Checkout' : 'Login to checkout'}
+                  appearance="primary"
+                />
+              </div>
             </div>
           )}
         </Fragment>

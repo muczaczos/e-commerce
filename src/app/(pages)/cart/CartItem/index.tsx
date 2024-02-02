@@ -5,18 +5,23 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Media } from '../../../_components/Media'
+import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 
 import classes from './index.module.scss'
-import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 
 const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
   const [quantity, setQuantity] = useState(qty)
 
-  const decrementQty = () => {}
+  const decrementQty = () => {
+    const updateQty = quantity > 1 ? quantity - 1 : 1
+
+    setQuantity(updateQty)
+    addItemToCart({ product, quantity: Number(updateQty) })
+  }
   const incrementQty = () => {}
   const enterQty = () => {}
-  var subtotal = 0; 
-  
+  var subtotal = 0
+
   return (
     <li key={title} className={classes.item}>
       <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
