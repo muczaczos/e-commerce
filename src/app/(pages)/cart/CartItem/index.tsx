@@ -6,12 +6,14 @@ import Link from 'next/link'
 
 import { Media } from '../../../_components/Media'
 import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
+import { useCart } from '../../../_providers/Cart'
 
 import classes from './index.module.scss'
 
 const CartItem = ({ sub = 0, product, title, metaImage, qty, price, addItemToCart }) => {
   const [quantity, setQuantity] = useState(qty)
   const [subTotal, setSubTotal] = useState(Number(sub) + Number(price))
+  const { totalAmount } = useCart()
 
   const decrementQty = () => {
     var updateQty = 0
@@ -60,7 +62,7 @@ const CartItem = ({ sub = 0, product, title, metaImage, qty, price, addItemToCar
       <div className={classes.itemDetails}>
         <div className={classes.titleWrapper}>
           <h6>{title}</h6>
-          {price}
+          ${price}
         </div>
 
         <div className={classes.quantity}>
@@ -94,9 +96,8 @@ const CartItem = ({ sub = 0, product, title, metaImage, qty, price, addItemToCar
       </div>
 
       <div className={classes.subtotalWrapper}>
+        ${subTotal}
         <RemoveFromCartButton product={product} />
-        <p>subtotal</p>
-        {subTotal}
       </div>
     </li>
   )

@@ -25,6 +25,7 @@ export type CartContext = {
     formatted: string
     raw: number
   }
+  totalAmount: number | 0 //that is total which I use for other type of payment gateway than 'stripe'
   hasInitializedCart: boolean
 }
 
@@ -57,6 +58,8 @@ export const CartProvider = props => {
     formatted: '0.00',
     raw: 0,
   })
+
+  const [totalAm, setTotalAm] = useState(0)
 
   const hasInitialized = useRef(false)
   const [hasInitializedCart, setHasInitialized] = useState(false)
@@ -238,6 +241,19 @@ export const CartProvider = props => {
         )
       }, 0) || 0
 
+    const newTotal2 =
+      cart?.items?.reduce((acc, item) => {
+        return (
+          acc +
+          (typeof item.product === 'object'
+            ? Number(item?.product?.price) *
+              (typeof item?.quantity === 'number' ? item?.quantity : 0)
+            : 0)
+        )
+      }, 0) || 0
+
+    setTotalAm(newTotal2)
+
     setTotal({
       formatted: (newTotal / 100).toLocaleString('en-US', {
         style: 'currency',
@@ -257,6 +273,7 @@ export const CartProvider = props => {
         clearCart,
         isProductInCart,
         cartTotal: total,
+        totalAmount: totalAm,
         hasInitializedCart,
       }}
     >
