@@ -6,50 +6,36 @@ import Link from 'next/link'
 
 import { Media } from '../../../_components/Media'
 import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
-import { useCart } from '../../../_providers/Cart'
 
 import classes from './index.module.scss'
 
-const CartItem = ({ sub, product, title, metaImage, qty, price, addItemToCart }) => {
-  const [quantity, setQuantity] = useState(qty)
-  const [subTotal, setSubTotal] = useState(Number(price))
-  const { totalAmount } = useCart()
-  product.subtotal = subTotal
+const CartItem = ({ product, title, metaImage, qty, price, addItemToCart, sub }) => {
 
   const decrementQty = () => {
-    var updateQty = 0
-    var subtotal = 0
-    if (quantity > 1) {
-      subtotal = Number(sub)
-      updateQty = quantity - 1
-      subtotal = subTotal - Number(price)
+    
+    if (qty > 1) {
+      qty = qty - 1
+      sub = sub - Number(price)
     } else {
-      subtotal = Number(price)
-      updateQty = 1
+      sub = Number(price)
+      qty = 1
     }
-
-    setSubTotal(subtotal)
-    setQuantity(updateQty)
-    addItemToCart({ product, quantity: Number(updateQty) })
+    addItemToCart({ product, quantity: Number(qty)})
     
   }
 
   const incrementQty = () => {
-    const updateQty = quantity + 1
-    const subtotal = subTotal + Number(price)
+    qty = qty + 1
+    sub = sub + Number(price)
 
-    setSubTotal(subtotal)
-    setQuantity(updateQty)
-    addItemToCart({ product, quantity: Number(updateQty) })
+    addItemToCart({ product, quantity: Number(qty)})
   }
 
   const enterQty = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const updateQty = Number(e.target.value)
-    var subtotal = updateQty * price
+    qty = Number(e.target.value)
+    sub = qty * price
 
-    setSubTotal(subtotal)
-    setQuantity(updateQty)
-    addItemToCart({ product, quantity: Number(updateQty) })
+    addItemToCart({ product, quantity: Number(qty) })
   }
 
   return (
@@ -81,7 +67,7 @@ const CartItem = ({ sub, product, title, metaImage, qty, price, addItemToCart })
           <input
             type="text"
             className={classes.quantityInput}
-            value={quantity}
+            value={qty}
             onChange={enterQty}
           />
 
@@ -98,7 +84,7 @@ const CartItem = ({ sub, product, title, metaImage, qty, price, addItemToCart })
       </div>
 
       <div className={classes.subtotalWrapper}>
-        ${product.subtotal}
+        ${sub}
         <RemoveFromCartButton product={product} />
       </div>
     </li>

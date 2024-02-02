@@ -198,6 +198,7 @@ export interface Product {
   title: string;
   price: string;
   sub: number;
+  qty: number;
   publishedOn?: string | null;
   layout?:
     | (

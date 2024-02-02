@@ -74,8 +74,8 @@ export const CartPage: React.FC<{
                       const {
                         quantity,
                         product,
-                        subtotal,
                         product: { price, id, title, meta, stripeProductID },
+                        subtotal = Number(price) * quantity,
                       } = item
 
                       const isLast = index === (cart?.items?.length || 0) - 1
