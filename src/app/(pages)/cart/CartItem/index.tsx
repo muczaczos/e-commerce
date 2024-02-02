@@ -10,10 +10,11 @@ import { useCart } from '../../../_providers/Cart'
 
 import classes from './index.module.scss'
 
-const CartItem = ({ sub = 0, product, title, metaImage, qty, price, addItemToCart }) => {
+const CartItem = ({ sub, product, title, metaImage, qty, price, addItemToCart }) => {
   const [quantity, setQuantity] = useState(qty)
-  const [subTotal, setSubTotal] = useState(Number(sub) + Number(price))
+  const [subTotal, setSubTotal] = useState(Number(price))
   const { totalAmount } = useCart()
+  product.subtotal = subTotal
 
   const decrementQty = () => {
     var updateQty = 0
@@ -30,6 +31,7 @@ const CartItem = ({ sub = 0, product, title, metaImage, qty, price, addItemToCar
     setSubTotal(subtotal)
     setQuantity(updateQty)
     addItemToCart({ product, quantity: Number(updateQty) })
+    
   }
 
   const incrementQty = () => {
@@ -96,7 +98,7 @@ const CartItem = ({ sub = 0, product, title, metaImage, qty, price, addItemToCar
       </div>
 
       <div className={classes.subtotalWrapper}>
-        ${subTotal}
+        ${product.subtotal}
         <RemoveFromCartButton product={product} />
       </div>
     </li>
