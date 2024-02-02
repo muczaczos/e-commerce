@@ -18,8 +18,19 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
     setQuantity(updateQty)
     addItemToCart({ product, quantity: Number(updateQty) })
   }
-  const incrementQty = () => {}
-  const enterQty = () => {}
+
+  const incrementQty = () => {
+    const updateQty = quantity + 1
+
+    setQuantity(updateQty)
+    addItemToCart({ product, quantity: Number(updateQty) })
+  }
+  const enterQty = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updateQty = Number(e.target.value)
+    
+    setQuantity(updateQty)
+    addItemToCart({ product, quantity: Number(updateQty) })
+  }
   var subtotal = 0
 
   return (
