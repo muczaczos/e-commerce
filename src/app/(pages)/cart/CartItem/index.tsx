@@ -9,29 +9,44 @@ import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 
 import classes from './index.module.scss'
 
-const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
+const CartItem = ({ sub = 0, product, title, metaImage, qty, price, addItemToCart }) => {
   const [quantity, setQuantity] = useState(qty)
+  const [subTotal, setSubTotal] = useState(Number(sub) + Number(price))
 
   const decrementQty = () => {
-    const updateQty = quantity > 1 ? quantity - 1 : 1
+    var updateQty = 0
+    var subtotal = 0
+    if (quantity > 1) {
+      subtotal = Number(sub)
+      updateQty = quantity - 1
+      subtotal = subTotal - Number(price)
+    } else {
+      subtotal = Number(price)
+      updateQty = 1
+    }
 
+    setSubTotal(subtotal)
     setQuantity(updateQty)
     addItemToCart({ product, quantity: Number(updateQty) })
   }
 
   const incrementQty = () => {
     const updateQty = quantity + 1
+    const subtotal = subTotal + Number(price)
 
+    setSubTotal(subtotal)
     setQuantity(updateQty)
     addItemToCart({ product, quantity: Number(updateQty) })
   }
+
   const enterQty = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updateQty = Number(e.target.value)
-    
+    var subtotal = updateQty * price
+
+    setSubTotal(subtotal)
     setQuantity(updateQty)
     addItemToCart({ product, quantity: Number(updateQty) })
   }
-  var subtotal = 0
 
   return (
     <li key={title} className={classes.item}>
@@ -80,6 +95,8 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart }) => {
 
       <div className={classes.subtotalWrapper}>
         <RemoveFromCartButton product={product} />
+        <p>subtotal</p>
+        {subTotal}
       </div>
     </li>
   )
