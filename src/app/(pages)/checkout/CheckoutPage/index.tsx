@@ -108,7 +108,8 @@ export const CheckoutPage: React.FC<{
                 const {
                   quantity,
                   product,
-                  product: { title, meta },
+                  product: { price, title, meta },
+                  subtotal = Number(price) * quantity,
                 } = item
 
                 if (!quantity) return null
@@ -123,6 +124,8 @@ export const CheckoutPage: React.FC<{
                       metaImage={metaImage}
                       quantity={quantity}
                       index={index}
+                      price={price}
+                      subtotal={subtotal}
                     />
                   </Fragment>
                 )
