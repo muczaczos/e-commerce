@@ -35,7 +35,7 @@ export const CheckoutPage: React.FC<{
   const hasMadePaymentIntent = React.useRef(false)
   const { theme } = useTheme()
 
-  const { cart, cartIsEmpty, cartTotal } = useCart()
+  const { cart, cartIsEmpty, cartTotal, totalAmount} = useCart()
 
   useEffect(() => {
     if (user !== null && cartIsEmpty) {
@@ -134,7 +134,7 @@ export const CheckoutPage: React.FC<{
             })}
             <div className={classes.orderTotal}>
               <p>Order Total</p>
-              <p>{cartTotal.formatted}</p>
+              <p>${totalAmount}</p>
             </div>
           </ul>
         </div>
