@@ -50,3 +50,12 @@
 .error {
   margin-top: calc(var(--block-padding) - var(--base));
 }
+
+.sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @include small-break {
+    flex-direction: column;
+  }
+}

@@ -21,7 +21,7 @@ export const CheckoutForm: React.FC<{}> = () => {
       <div className={classes.actions}>
         <Button label="Back to cart" href="/cart" appearance="secondary" />
         <Button
-          label={'Checkout'}
+          label={'Place the Order'}
           type="submit"
           appearance="primary"
         />

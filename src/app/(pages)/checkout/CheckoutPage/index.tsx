@@ -36,7 +36,7 @@ export const CheckoutPage: React.FC<{
   const hasMadePaymentIntent = React.useRef(false)
   const { theme } = useTheme()
 
-  const { cart, cartIsEmpty, cartTotal, totalAmount} = useCart()
+  const { cart, cartIsEmpty, cartTotal, totalAmount } = useCart()
 
   useEffect(() => {
     if (user !== null && cartIsEmpty) {
@@ -45,7 +45,7 @@ export const CheckoutPage: React.FC<{
   }, [router, user, cartIsEmpty])
 
   useEffect(() => {
-    if (cart && hasMadePaymentIntent.current === false) {
+    if (user && cart && hasMadePaymentIntent.current === false) {
       hasMadePaymentIntent.current = true
 
       const makeIntent = async () => {
@@ -75,7 +75,7 @@ export const CheckoutPage: React.FC<{
     }
   }, [cart, user])
 
-  
+  //if (!user || !stripe) return null
 
   return (
     <Fragment>
@@ -110,7 +110,7 @@ export const CheckoutPage: React.FC<{
                   quantity,
                   product,
                   product: { price, title, meta },
-                  subtotal = Number(price) * quantity,
+                  subtotal = Number(price) * quantity
                 } = item
 
                 if (!quantity) return null
@@ -135,14 +135,25 @@ export const CheckoutPage: React.FC<{
             })}
             <div className={classes.orderTotal}>
               <p>Order Total</p>
-              <p>${totalAmount}</p>
+              <p>{totalAmount}</p>
             </div>
           </ul>
-          <h3 className={classes.payment}>Payment Details</h3>  
-          <CustomCheckoutForm />
         </div>
-      )}
+      )} 
      
+      {!cartIsEmpty && (
+        <>
+          <div className={classes.sections}>
+            <div className={classes.shippingSection}>
+              <h3 className={classes.shipping}>Shipping Details</h3>
+            </div>
+            <div className={classes.paymentSection}>
+              <h3 className={classes.payment}>Payment Details</h3>
+            </div>
+          </div>
+          <CustomCheckoutForm />
+        </>
+      )}
     </Fragment>
   )
 }
