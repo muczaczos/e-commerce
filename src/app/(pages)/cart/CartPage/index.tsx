@@ -46,13 +46,7 @@ export const CartPage: React.FC<{
                   {` to shop.`}
                 </Fragment>
               )}
-              {!user && (
-                <Fragment>
-                  {' '}
-                  <Link href={`/login?redirect=%2Fcart`}>Log in</Link>
-                  {` to view a saved cart.`}
-                </Fragment>
-              )}
+            
             </div>
           ) : (
             <div className={classes.cartWrapper}>
@@ -116,8 +110,8 @@ export const CartPage: React.FC<{
 
                 <Button
                   className={classes.checkoutButton}
-                  href={user ? '/checkout' : '/login?redirect=%2Fcheckout'}
-                  label={user ? 'Checkout' : 'Login to checkout'}
+                  href={'/checkout' }
+                  label={ 'Checkout' }
                   appearance="primary"
                 />
               </div>

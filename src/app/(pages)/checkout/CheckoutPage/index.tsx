@@ -17,6 +17,7 @@ import { CheckoutForm } from '../CheckoutForm'
 import { CheckoutItem } from '../CheckoutItem'
 
 import classes from './index.module.scss'
+import CustomCheckoutForm from '../CustomCheckoutForm'
 
 const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
 const stripe = loadStripe(apiKey)
@@ -44,7 +45,7 @@ export const CheckoutPage: React.FC<{
   }, [router, user, cartIsEmpty])
 
   useEffect(() => {
-    if (user && cart && hasMadePaymentIntent.current === false) {
+    if (cart && hasMadePaymentIntent.current === false) {
       hasMadePaymentIntent.current = true
 
       const makeIntent = async () => {
@@ -74,7 +75,7 @@ export const CheckoutPage: React.FC<{
     }
   }, [cart, user])
 
-  if (!user || !stripe) return null
+  
 
   return (
     <Fragment>
@@ -137,52 +138,11 @@ export const CheckoutPage: React.FC<{
               <p>${totalAmount}</p>
             </div>
           </ul>
+          <h3 className={classes.payment}>Payment Details</h3>  
+          <CustomCheckoutForm />
         </div>
       )}
-      {!clientSecret && !error && (
-        <div className={classes.loading}>
-          <LoadingShimmer number={2} />
-        </div>
-      )}
-      {!clientSecret && error && (
-        <div className={classes.error}>
-          <p>{`Error: ${error}`}</p>
-          <Button label="Back to cart" href="/cart" appearance="secondary" />
-        </div>
-      )}
-      {clientSecret && (
-        <Fragment>
-          <h3 className={classes.payment}>Payment Details</h3>
-          {error && <p>{`Error: ${error}`}</p>}
-          <Elements
-            stripe={stripe}
-            options={{
-              clientSecret,
-              appearance: {
-                theme: 'stripe',
-                variables: {
-                  colorText:
-                    theme === 'dark' ? cssVariables.colors.base0 : cssVariables.colors.base1000,
-                  fontSizeBase: '16px',
-                  fontWeightNormal: '500',
-                  fontWeightBold: '600',
-                  colorBackground:
-                    theme === 'dark' ? cssVariables.colors.base850 : cssVariables.colors.base0,
-                  fontFamily: 'Inter, sans-serif',
-                  colorTextPlaceholder: cssVariables.colors.base500,
-                  colorIcon:
-                    theme === 'dark' ? cssVariables.colors.base0 : cssVariables.colors.base1000,
-                  borderRadius: '0px',
-                  colorDanger: cssVariables.colors.error500,
-                  colorDangerText: cssVariables.colors.error500,
-                },
-              },
-            }}
-          >
-            <CheckoutForm />
-          </Elements>
-        </Fragment>
-      )}
+     
     </Fragment>
   )
 }
