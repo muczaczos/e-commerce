@@ -15,9 +15,10 @@ import { useTheme } from '../../../_providers/Theme'
 import cssVariables from '../../../cssVariables'
 import { CheckoutForm } from '../CheckoutForm'
 import { CheckoutItem } from '../CheckoutItem'
+import CustomCheckoutForm from '../CustomCheckoutForm'
+import ShippingDetails from './ShippingDetails'
 
 import classes from './index.module.scss'
-import CustomCheckoutForm from '../CustomCheckoutForm'
 
 const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
 const stripe = loadStripe(apiKey)
@@ -110,7 +111,7 @@ export const CheckoutPage: React.FC<{
                   quantity,
                   product,
                   product: { price, title, meta },
-                  subtotal = Number(price) * quantity
+                  subtotal = Number(price) * quantity,
                 } = item
 
                 if (!quantity) return null
@@ -139,18 +140,19 @@ export const CheckoutPage: React.FC<{
             </div>
           </ul>
         </div>
-      )} 
-     
+      )}
+
       {!cartIsEmpty && (
         <>
-          <div className={classes.sections}>
+          <form className={classes.sections}>
             <div className={classes.shippingSection}>
               <h3 className={classes.shipping}>Shipping Details</h3>
+              <ShippingDetails />
             </div>
             <div className={classes.paymentSection}>
               <h3 className={classes.payment}>Payment Details</h3>
             </div>
-          </div>
+          </form>
           <CustomCheckoutForm />
         </>
       )}
