@@ -150,7 +150,7 @@ export const CheckoutPage: React.FC<{
               <ShippingDetails />
             </div>
             <div className={classes.paymentSection}>
-              <h3 className={classes.payment}>Payment Details</h3>
+              <h3 className={classes.payment}>Payment Methods</h3>
             </div>
           </form>
           <CustomCheckoutForm />

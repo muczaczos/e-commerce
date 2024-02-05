@@ -1,20 +1,50 @@
 @import "../../../../_css/common";
 
 .forms {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.shippingForm {
   width: 100%;
-  padding: 24px;
   margin-bottom: var(--base);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
   margin-top: 30px;
   align-items: flex-start;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: [col] 48% [col] 48% [col];
+  grid-template-rows: [row] auto [row] auto [row] ;
+}
+
+.fullName {
+  grid-column: col / span 2;
+  grid-row: row;
+}
+
+.address {
+  grid-column: col / span 2;
+  grid-row: row 2;
+}
+
+.postalCode {
+  grid-column: col 2 / span 1;
+  grid-row: row 3;
+}
+
+.city { 
+  grid-column: col / span 1;
+  grid-row: row 3;
+}
+
+.country {
+  grid-column: col / span 2;
+  grid-row: row 4;
+}
+
+.phone { 
+  grid-column: col / span 1;
+  grid-row: row 5;
+}
+
+.email { 
+  grid-column: col 2 / span 1;
+  grid-row: row 5;
+}
 
 .submit {
   width: 100%;
@@ -29,5 +59,4 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-}
 }

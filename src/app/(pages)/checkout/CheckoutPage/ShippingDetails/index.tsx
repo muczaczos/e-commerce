@@ -47,30 +47,69 @@ const ShippingDetails = () => {
 
   return (
     <div className={classes.forms}>
+      <div className={classes.fullName}>
         <Input
           name="fullname"
           type="text"
-          label="Fullname"
-          required
+          label="Full Name"
           register={register}
           error={errors.email}
         />
+      </div>
+      <div className={classes.address}>
         <Input
-          name="email"
-          type="email"
-          label="Email"
-          required
+          name="address"
+          type="text"
+          label="Street Address"
           register={register}
           error={errors.email}
         />
+      </div>
+      <div className={classes.city}>
+        <Input
+          name="city"
+          type="text"
+          label="City"
+          register={register}
+          error={errors.email}
+        />
+      </div>
+      <div className={classes.postalCode}>
+        <Input
+          name="postalcode"
+          type="text"
+          label="Postal Code"
+          register={register}
+          error={errors.email}
+        />
+      </div>
+      <div className={classes.country}>
+        <Input
+          name="country"
+          type="text"
+          label="Country"
+          register={register}
+          error={errors.email}
+        />
+      </div>
+      <div className={classes.phone}>
         <Input
           name="phone"
-          type="number"
+          type="text"
           label="Phone Number"
-          required
           register={register}
           error={errors.email}
         />
+      </div>
+      <div className={classes.email}>
+        <Input
+          name="email"
+          type="text"
+          label="Email"
+          register={register}
+          error={errors.email}
+        />
+      </div>
      
       
     </div>
