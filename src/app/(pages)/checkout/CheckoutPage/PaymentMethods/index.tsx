@@ -1,22 +1,24 @@
 import React from 'react'
 
+
 import { RadioButton } from '../../../../_components/Radio'
 
 import classes from './index.module.scss'
 import { Media } from '../../../../_components/Media'
 import { HR } from '../../../../_components/HR'
 
-const PaymentMethods = () => {
-  const [paymentMethod, setPaymentMethod] = React.useState('')
+const PaymentMethods = ({method, setMethod} ) => {
 
-  const handlePaymentMethod = (value: string) => setPaymentMethod(value)
+  const handlePaymentMethod = (value: string) => {
+    setMethod(value)
+  }
 
   return (
     <div className={classes.paymentOptions}>
       <RadioButton
         label="Bank Trafser"
         value="transfer"
-        isSelected={paymentMethod === 'transfer'}
+        isSelected={method === 'transfer'}
         onRadioChange={handlePaymentMethod}
         groupName="method"
       />
@@ -24,7 +26,7 @@ const PaymentMethods = () => {
       <RadioButton
         label="Payment Gateway"
         value="gateway"
-        isSelected={paymentMethod === 'gateway'}
+        isSelected={method === 'gateway'}
         onRadioChange={handlePaymentMethod}
         groupName="method"
       />
@@ -32,7 +34,7 @@ const PaymentMethods = () => {
        <RadioButton
         label="Cryptocurrency ETH"
         value="eth"
-        isSelected={paymentMethod === 'eth'}
+        isSelected={method === 'eth'}
         onRadioChange={handlePaymentMethod}
         groupName="method"
       />

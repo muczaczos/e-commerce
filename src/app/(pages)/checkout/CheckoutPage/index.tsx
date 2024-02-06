@@ -30,6 +30,7 @@ export const CheckoutPage: React.FC<{
   const {
     settings: { productsPage },
   } = props
+  const [method, setMethod] = React.useState("");
 
   const { user } = useAuth()
   const router = useRouter()
@@ -152,10 +153,11 @@ export const CheckoutPage: React.FC<{
             </div>
             <div className={classes.paymentSection}>
               <h3 className={classes.payment}>Payment Methods</h3>
-              <PaymentMethods />
+              <PaymentMethods method={method} setMethod={setMethod}/>
             </div>
           </form>
           <CustomCheckoutForm />
+          {method}
         </>
       )}
     </Fragment>
