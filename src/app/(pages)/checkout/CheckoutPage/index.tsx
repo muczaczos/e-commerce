@@ -19,6 +19,7 @@ import CustomCheckoutForm from '../CustomCheckoutForm'
 import ShippingDetails from './ShippingDetails'
 
 import classes from './index.module.scss'
+import PaymentMethods from './PaymentMethods'
 
 const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
 const stripe = loadStripe(apiKey)
@@ -151,6 +152,7 @@ export const CheckoutPage: React.FC<{
             </div>
             <div className={classes.paymentSection}>
               <h3 className={classes.payment}>Payment Methods</h3>
+              <PaymentMethods />
             </div>
           </form>
           <CustomCheckoutForm />

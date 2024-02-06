@@ -1,0 +1,10 @@
+@import '../../../../_css/common';
+
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  column-gap: 24px;
+  @include small-break {
+    padding-bottom: 24px;
+  }
+}

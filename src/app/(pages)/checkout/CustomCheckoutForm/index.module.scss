@@ -7,7 +7,7 @@
 }
 
 .actions {
+  margin-top: 24px;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--base);
+  justify-content: space-between;
 }
