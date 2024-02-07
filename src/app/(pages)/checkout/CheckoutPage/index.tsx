@@ -3,6 +3,7 @@
 import React, { Fragment, useEffect } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -16,10 +17,10 @@ import cssVariables from '../../../cssVariables'
 import { CheckoutForm } from '../CheckoutForm'
 import { CheckoutItem } from '../CheckoutItem'
 import CustomCheckoutForm from '../CustomCheckoutForm'
+import PaymentMethods from './PaymentMethods'
 import ShippingDetails from './ShippingDetails'
 
 import classes from './index.module.scss'
-import PaymentMethods from './PaymentMethods'
 
 const apiKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
 const stripe = loadStripe(apiKey)
@@ -30,7 +31,7 @@ export const CheckoutPage: React.FC<{
   const {
     settings: { productsPage },
   } = props
-  const [method, setMethod] = React.useState("");
+  const [method, setMethod] = React.useState('')
 
   const { user } = useAuth()
   const router = useRouter()
@@ -79,6 +80,64 @@ export const CheckoutPage: React.FC<{
   }, [cart, user])
 
   //if (!user || !stripe) return null
+
+  const generatePayment = () => {
+    const axios = require('axios')
+
+    var crypto = require('crypto')
+    var shasum = crypto.createHash('sha1')
+    $transactionRequest['sign'] = sha1($transactionRequest['title']
+    . $transactionRequest['amount']['value'] . $transactionRequest['amount']['currencyCode']
+    . $transactionRequest['returnUrl'] . $transactionRequest['description'] . $transactionRequest['additionalData']
+    . $secretPhrase);
+
+    let data = JSON.stringify({
+      title: 'test nr 1',
+      amount: {
+        value: 150,
+        currencyCode: 'pln',
+      },
+      description: 'Order no: 1222',
+      additionalData: 'no: 1222',
+      returnUrl: 'https://www.planet-of-mushrooms.com',
+      negativeReturnUrl: 'htpps://www.shroom.it',
+      languageCode: 'pl',
+      personalData: {
+        firstName: 'Jan',
+        surname: 'Kowalski',
+        email: 'jan@tlen.pl',
+        country: 'Poland',
+        city: 'Warszawa',
+        postcode: '44-444',
+        street: 'zachlapana',
+        house: 'zachlapany',
+        flat: 'string',
+        ip: 'string',
+      },
+      referer: 'UiTeH',
+      sign: 'string',
+    })
+    
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://pay.cashbill.pl/ws/rest/payment/:shopId',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      data: data,
+    }
+
+    axios(config)
+      .then(response => {
+        console.log(JSON.stringify(response.data))
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
   return (
     <Fragment>
@@ -153,7 +212,7 @@ export const CheckoutPage: React.FC<{
             </div>
             <div className={classes.paymentSection}>
               <h3 className={classes.payment}>Payment Methods</h3>
-              <PaymentMethods method={method} setMethod={setMethod}/>
+              <PaymentMethods method={method} setMethod={setMethod} />
             </div>
           </form>
           <CustomCheckoutForm />
