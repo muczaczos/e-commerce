@@ -152,8 +152,7 @@ export const CheckoutPage: React.FC<{
               <PaymentMethods method={method} setMethod={setMethod} />
             </div>
           </form>
-          <CustomCheckoutForm />
-          {method}
+          <CustomCheckoutForm method={method} setMethod={setMethod}/>
         </>
       )}
     </Fragment>
