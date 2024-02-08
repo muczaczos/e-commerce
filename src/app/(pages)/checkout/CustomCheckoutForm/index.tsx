@@ -17,9 +17,9 @@ const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
   const [error, setError] = React.useState<string | null>(null)
   const [isLoading, setIsLoading] = React.useState(false)
   const router = useRouter()
-  const { cart, cartTotal } = useCart()
+  const { cart, cartTotal, totalAmount} = useCart()
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (method === 'gateway') {
       let data = JSON.stringify({
         title: 'test nr 1',
@@ -84,23 +84,32 @@ const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
         })
     } else if (method === 'transfer') {
       console.log('1')
-      const orderReq = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders`, {
+      const orderReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders`, {
         method: 'POST',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          total: cartTotal.raw,
+          total: totalAmount,
           stripePaymentIntentID: '',
           items: (cart?.items || [])?.map(({ product, quantity }) => ({
             product: typeof product === 'string' ? product : product.id,
             quantity,
-            price:
-              typeof product === 'object' ? priceFromJSON(product.priceJSON, 1, true) : undefined,
+            price: typeof product === 'object' ? priceFromJSON(product.priceJSON, 1, true) : undefined,
           })),
         }),
       })
+
+      const {
+        error: errorFromRes,
+        doc,
+      }: {
+        message?: string
+        error?: string
+        doc: Order
+      } = await orderReq.json()
+      router.push(`/order-confirmation?order_id=${doc.id}`)
       console.log('end transfer')
     } else if (method === 'eth') {
       console.log('dupa eth')
