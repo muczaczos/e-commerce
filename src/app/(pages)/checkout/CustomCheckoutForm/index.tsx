@@ -5,6 +5,7 @@ import axios from 'axios'
 import { sha1 } from 'js-sha1'
 import { useRouter } from 'next/navigation'
 
+import { Input } from '../../../_components/Input'
 import { Order } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { Message } from '../../../_components/Message'
@@ -12,12 +13,30 @@ import { priceFromJSON } from '../../../_components/Price'
 import { useCart } from '../../../_providers/Cart'
 
 import classes from './index.module.scss'
+import { useForm } from 'react-hook-form'
 
-const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
+const CustomCheckoutForm: React.FC<{method: string}> = ({ method }) => {
   const [error, setError] = React.useState<string | null>(null)
-  const [isLoading, setIsLoading] = React.useState(false)
+  //const [isLoading, setIsLoading] = React.useState(false)
   const router = useRouter()
   const { cart, cartTotal, totalAmount } = useCart()
+  const {
+    register,
+    formState: { errors, isLoading },
+  } = useForm<FormData>()
+
+  const [fullName, setFullName] = React.useState('')
+  const [address, setAddress] = React.useState('')
+  const [city, setCity] = React.useState('')
+  const [postalCode, setPostalCode] = React.useState('')
+  const [country, setCountry] = React.useState('')
+  const [phone, setPhone] = React.useState('')
+  const [email, setEmail] = React.useState('')
+
+  const handleName = (e) => {
+    console.log(e.target.value)
+    setFullName(e.target.value)
+  }
 
   const handleSubmit = async () => {
     if (method === 'gateway') {
@@ -96,6 +115,7 @@ const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
           items: (cart?.items || [])?.map(({ product, quantity }) => ({
             product: typeof product === 'string' ? product : product.id,
             quantity,
+            fullname: fullName,
             price:
               typeof product === 'object' ? priceFromJSON(product.priceJSON, 1, true) : undefined,
           })),
@@ -120,6 +140,37 @@ const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
   return (
     <div className={classes.form}>
       <div className={classes.actions}>
+      <div className={classes.forms}>
+      <div className={classes.fullName}>
+        <Input
+          name="fullname"
+          type="text"
+          label="Full Name"
+          register={register}
+          error={null}
+          disabled={false}
+          onChange={handleName}
+        />
+      </div>
+      <div className={classes.address}>
+        <Input name="address" type="text" label="Street Address" register={register} error={null} />
+      </div>
+      <div className={classes.city}>
+        <Input name="city" type="text" label="City" register={register} error={null} />
+      </div>
+      <div className={classes.postalCode}>
+        <Input name="postalcode" type="text" label="Postal Code" register={register} error={null} />
+      </div>
+      <div className={classes.country}>
+        <Input name="country" type="text" label="Country" register={register} error={null} />
+      </div>
+      <div className={classes.phone}>
+        <Input name="phone" type="text" label="Phone Number" register={register} error={null} />
+      </div>
+      <div className={classes.email}>
+        <Input name="email" type="email" label="Email" register={register} error={null} />
+      </div>
+    </div>
         <Button label="Back to cart" href="/cart" appearance="secondary" />
         <Button onClick={handleSubmit} label="Place the Order" appearance="primary"/>
       </div>

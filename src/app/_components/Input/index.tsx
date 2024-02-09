@@ -12,6 +12,7 @@ type Props = {
   type?: 'text' | 'number' | 'password' | 'email'
   validate?: (value: string) => boolean | string
   disabled?: boolean
+  onChange?: (e) => void
 }
 
 export const Input: React.FC<Props> = ({
@@ -23,6 +24,7 @@ export const Input: React.FC<Props> = ({
   type = 'text',
   validate,
   disabled,
+  onChange
 }) => {
   return (
     <div className={classes.inputWrap}>
@@ -46,6 +48,7 @@ export const Input: React.FC<Props> = ({
             : {}),
         })}
         disabled={disabled}
+        onChange={onChange}
       />
       {error && (
         <div className={classes.errorMessage}>
