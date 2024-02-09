@@ -1,0 +1,91 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .hero {
+    margin: 0;
+  }
+}
+
+.heroWrapper {
+  background-color: var(--color-dark-50);
+  width: 100%;
+  max-width: 1560px;
+  max-height: 884px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: revert;
+  background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+  .heroWrapper {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.heroTextBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15% var(--gutter-h);
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .heroTextBox {
+    padding: 10% 30px;
+  }
+}
+@media (max-width: 768px) {
+  .heroTextBox {
+    padding: 50px 30px;
+  }
+}
+.heroTextBox h2 {
+  font-size: 70px;
+  margin: 32px 0;
+}
+@media (max-width: 1024px) {
+  .heroTextBox h2 {
+    font-size: 48px;
+    margin: 24px 0;
+    white-space: wrap;
+  }
+}
+@media (max-width: 768px) {
+  .heroTextBox h2 {
+    width: 70%;
+    font-size: 36px;
+    margin: 8px 0;
+  }
+}
+.heroTextBox p {
+  font-size: 30px;
+}
+@media (max-width: 1024px) {
+  .heroTextBox p {
+    font-size: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .heroTextBox p {
+    font-size: 18px;
+  }
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding-top: 50px;
+  flex-wrap: wrap;
+  margin: calc(var(--base) * -0.5);
+}
+.links > * {
+  margin: calc(var(--base) / 2);
+}/*# sourceMappingURL=index.module.css.map */

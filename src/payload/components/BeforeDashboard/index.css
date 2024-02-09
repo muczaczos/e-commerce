@@ -1,0 +1,16 @@
+.dashboard .before-dashboard {
+  margin-bottom: 2.8846153846rem;
+}
+.dashboard .before-dashboard__banner h4 {
+  margin: 0;
+}
+.dashboard .before-dashboard__instructions {
+  list-style: decimal;
+  margin-bottom: 0.9615384615rem;
+}
+.dashboard .before-dashboard__instructions li {
+  width: 100%;
+}
+.dashboard .before-dashboard a:hover {
+  opacity: 0.85;
+}/*# sourceMappingURL=index.css.map */

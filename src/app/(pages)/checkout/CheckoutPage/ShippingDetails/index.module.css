@@ -1,0 +1,60 @@
+.forms {
+  width: 100%;
+  margin-bottom: var(--base);
+  margin-top: 30px;
+  align-items: flex-start;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: [col] 48% [col] 48% [col];
+  grid-template-rows: [row] auto [row] auto [row];
+}
+
+.fullName {
+  grid-column: col/span 2;
+  grid-row: row;
+}
+
+.address {
+  grid-column: col/span 2;
+  grid-row: row 2;
+}
+
+.postalCode {
+  grid-column: col 2/span 1;
+  grid-row: row 3;
+}
+
+.city {
+  grid-column: col/span 1;
+  grid-row: row 3;
+}
+
+.country {
+  grid-column: col/span 2;
+  grid-row: row 4;
+}
+
+.phone {
+  grid-column: col/span 1;
+  grid-row: row 5;
+}
+
+.email {
+  grid-column: col 2/span 1;
+  grid-row: row 5;
+}
+
+.submit {
+  width: 100%;
+}
+
+.message {
+  margin-bottom: var(--base);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}/*# sourceMappingURL=index.module.css.map */

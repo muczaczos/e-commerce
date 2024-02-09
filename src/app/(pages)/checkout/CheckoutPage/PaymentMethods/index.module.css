@@ -1,0 +1,10 @@
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  column-gap: 24px;
+}
+@media (max-width: 768px) {
+  .paymentOptions {
+    padding-bottom: 24px;
+  }
+}/*# sourceMappingURL=index.module.css.map */

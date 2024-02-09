@@ -1,0 +1,64 @@
+.filters {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (max-width: 1440px) {
+  .filters {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .filters {
+    margin-top: 16px;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+@media (max-width: 1440px) {
+  .categories {
+    flex-direction: row;
+  }
+}
+@media (max-width: 768px) {
+  .categories {
+    flex-direction: column;
+  }
+}
+
+.title {
+  white-space: nowrap;
+}
+
+.priceSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.sliderWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sliderWrapper p {
+  white-space: nowrap;
+}
+
+.hr {
+  margin: 20px 0;
+}/*# sourceMappingURL=index.module.css.map */

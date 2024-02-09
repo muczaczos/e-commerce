@@ -1,0 +1,36 @@
+.relatedProducts {
+  width: 100%;
+  padding-top: var(--base);
+}
+
+.introContent {
+  position: relative;
+  margin-bottom: calc(var(--base) * 2);
+}
+@media (max-width: 1024px) {
+  .introContent {
+    margin-bottom: var(--base);
+  }
+}
+
+.grid {
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(3, minmax(30%, 1fr));
+  gap: 30px;
+}
+@media (max-width: 1024px) {
+  .grid {
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 100%;
+  }
+}
+
+.title {
+  font-weight: 400;
+  margin-bottom: 30px;
+}/*# sourceMappingURL=index.module.css.map */

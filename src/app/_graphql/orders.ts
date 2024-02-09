@@ -21,6 +21,13 @@ export const ORDER = `
           title
           priceJSON
         }
+        fullname
+        streetAddress
+        city
+        postalCode
+        country
+        phoneNumber
+        email
       }
     }
   }

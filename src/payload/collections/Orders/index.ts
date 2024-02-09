@@ -70,6 +70,34 @@ export const Orders: CollectionConfig = {
           type: 'number',
           min: 0,
         },
+        {
+          name: 'fullname',
+          type: 'text',
+        },
+        {
+          name: 'streetAddress',
+          type: 'text',
+        },
+        {
+          name: 'city',
+          type: 'text',
+        },
+        {
+          name: 'postalCode',
+          type: 'text',
+        },
+        {
+          name: 'country',
+          type: 'text',
+        },
+        {
+          name: 'phoneNumber',
+          type: 'text',
+        },
+        {
+          name: 'email',
+          type: 'text',
+        },
       ],
     },
   ],

@@ -1,0 +1,61 @@
+.promotion {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+@media (max-width: 768px) {
+  .promotion {
+    grid-template-columns: 1fr;
+  }
+}
+
+.title {
+  font-weight: 400;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.image {
+  min-height: 500px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dealBtn {
+  width: fit-content;
+}
+@media (max-width: 1024px) {
+  .dealBtn {
+    width: 100%;
+  }
+}
+
+.stats {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 100px);
+}
+@media (max-width: 1440px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.statBox {
+  border-radius: 10px;
+  border: 1px solid var(--color-dark-60);
+  padding: 16px;
+  min-width: 100px;
+  width: 100%;
+  text-align: center;
+}
+.statBox h4 {
+  font-weight: bold;
+}/*# sourceMappingURL=index.module.css.map */

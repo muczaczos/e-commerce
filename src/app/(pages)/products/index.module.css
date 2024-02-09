@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr 75%;
+  gap: 60px;
+}
+@media (max-width: 1440px) {
+  .products {
+    grid-template-columns: 100%;
+    gap: 48px;
+  }
+}/*# sourceMappingURL=index.module.css.map */

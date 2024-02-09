@@ -1,0 +1,9 @@
+.container {
+  margin-top: 50px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .container {
+    margin-top: 30px;
+  }
+}/*# sourceMappingURL=index.module.css.map */
