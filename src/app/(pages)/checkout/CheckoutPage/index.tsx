@@ -26,15 +26,16 @@ export const CheckoutPage: React.FC<{
     settings: { productsPage },
   } = props
   const [method, setMethod] = React.useState('')
-  const [userDetails, setUserDetails] = React.useState({
-    fullName: '',
-    address: '',
-    city: '',
-    postalCode: '',
-    country: '',
-    phone: '',
-    email: '',
-  })
+  const [fullName, setFullName] = React.useState('')
+  const [address, setAddress] = React.useState('')
+  const [city, setCity] = React.useState('')
+  const [postalCode, setPostalCode] = React.useState('')
+  const [country, setCountry] = React.useState('')
+  const [phone, setPhone] = React.useState('')
+  const [email, setEmail] = React.useState('')
+
+
+
   const { user } = useAuth()
   const router = useRouter()
   const [error, setError] = React.useState<string | null>(null)
@@ -149,16 +150,34 @@ export const CheckoutPage: React.FC<{
 
       {!cartIsEmpty && (
         <>
-          <form className={classes.sections}>
+          <div className={classes.sections}>
             <div className={classes.shippingSection}>
               <h3 className={classes.shipping}>Shipping Details</h3>
-              <ShippingDetails />
+              <ShippingDetails 
+                setFullName={setFullName} 
+                setAddress={setAddress} 
+                setCity={setCity} 
+                setPostalCode={setPostalCode}
+                setCountry={setCountry}
+                setPhone={setPhone}
+                setEmail={setEmail}
+                />
             </div>
             <div className={classes.paymentSection}>
               <h3 className={classes.payment}>Payment Methods</h3>
-              <PaymentMethods method={method} setMethod={setMethod} />
+              <PaymentMethods 
+                method={method} 
+                setMethod={setMethod}
+                fullName={fullName}
+                address={address}
+                city={city}
+                postalCode={postalCode}
+                country={country}
+                phone={phone}
+                email={email} 
+              />
             </div>
-          </form>
+          </div>
           <CustomCheckoutForm method={method} />
         </>
       )}

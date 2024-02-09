@@ -17,7 +17,15 @@ type FormData = {
   password: string
 }
 
-const ShippingDetails = () => {
+const ShippingDetails = ({
+  setFullName,
+  setAddress,
+  setCity,
+  setPostalCode,
+  setCountry,
+  setPhone,
+  setEmail,
+}) => {
   const searchParams = useSearchParams()
   const allParams = searchParams.toString() ? `?${searchParams.toString()}` : ''
   const redirect = useRef(searchParams.get('redirect'))
@@ -73,7 +81,7 @@ const ShippingDetails = () => {
         <Input name="phone" type="text" label="Phone Number" register={register} error={null} />
       </div>
       <div className={classes.email}>
-        <Input name="email" type="text" label="Email" register={register} error={errors.email} />
+        <Input name="email" type="email" label="Email" register={register} error={errors.email} />
       </div>
     </div>
   )

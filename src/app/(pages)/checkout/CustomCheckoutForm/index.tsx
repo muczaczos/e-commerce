@@ -17,7 +17,7 @@ const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
   const [error, setError] = React.useState<string | null>(null)
   const [isLoading, setIsLoading] = React.useState(false)
   const router = useRouter()
-  const { cart, cartTotal, totalAmount} = useCart()
+  const { cart, cartTotal, totalAmount } = useCart()
 
   const handleSubmit = async () => {
     if (method === 'gateway') {
@@ -96,7 +96,8 @@ const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
           items: (cart?.items || [])?.map(({ product, quantity }) => ({
             product: typeof product === 'string' ? product : product.id,
             quantity,
-            price: typeof product === 'object' ? priceFromJSON(product.priceJSON, 1, true) : undefined,
+            price:
+              typeof product === 'object' ? priceFromJSON(product.priceJSON, 1, true) : undefined,
           })),
         }),
       })
@@ -120,7 +121,7 @@ const CustomCheckoutForm: React.FC<{ method: string }> = ({ method }) => {
     <div className={classes.form}>
       <div className={classes.actions}>
         <Button label="Back to cart" href="/cart" appearance="secondary" />
-        <button onClick={handleSubmit}>Place the Order</button>
+        <Button onClick={handleSubmit} label="Place the Order" appearance="primary"/>
       </div>
     </div>
   )
