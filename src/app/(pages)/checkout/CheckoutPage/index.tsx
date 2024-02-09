@@ -19,7 +19,6 @@ import ShippingDetails from './ShippingDetails'
 
 import classes from './index.module.scss'
 
-
 export const CheckoutPage: React.FC<{
   settings: Settings
 }> = props => {
@@ -27,7 +26,15 @@ export const CheckoutPage: React.FC<{
     settings: { productsPage },
   } = props
   const [method, setMethod] = React.useState('')
-
+  const [userDetails, setUserDetails] = React.useState({
+    fullName: '',
+    address: '',
+    city: '',
+    postalCode: '',
+    country: '',
+    phone: '',
+    email: '',
+  })
   const { user } = useAuth()
   const router = useRouter()
   const [error, setError] = React.useState<string | null>(null)
@@ -152,7 +159,7 @@ export const CheckoutPage: React.FC<{
               <PaymentMethods method={method} setMethod={setMethod} />
             </div>
           </form>
-          <CustomCheckoutForm method={method} setMethod={setMethod}/>
+          <CustomCheckoutForm method={method} />
         </>
       )}
     </Fragment>

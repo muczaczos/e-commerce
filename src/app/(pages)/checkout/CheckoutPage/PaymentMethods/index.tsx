@@ -1,14 +1,12 @@
 import React from 'react'
 
-
+import { HR } from '../../../../_components/HR'
+import { Media } from '../../../../_components/Media'
 import { RadioButton } from '../../../../_components/Radio'
 
 import classes from './index.module.scss'
-import { Media } from '../../../../_components/Media'
-import { HR } from '../../../../_components/HR'
 
-const PaymentMethods = ({method, setMethod} ) => {
-
+const PaymentMethods = ({ method, setMethod }) => {
   const handlePaymentMethod = (value: string) => {
     setMethod(value)
   }
@@ -31,7 +29,7 @@ const PaymentMethods = ({method, setMethod} ) => {
         groupName="method"
       />
       <HR></HR>
-       <RadioButton
+      <RadioButton
         label="Cryptocurrency ETH"
         value="eth"
         isSelected={method === 'eth'}

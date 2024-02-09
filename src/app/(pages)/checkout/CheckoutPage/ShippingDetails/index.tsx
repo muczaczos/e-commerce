@@ -53,65 +53,28 @@ const ShippingDetails = () => {
           type="text"
           label="Full Name"
           register={register}
-          error={errors.email}
+          error={null}
+          disabled={false}
         />
       </div>
       <div className={classes.address}>
-        <Input
-          name="address"
-          type="text"
-          label="Street Address"
-          register={register}
-          error={errors.email}
-        />
+        <Input name="address" type="text" label="Street Address" register={register} error={null} />
       </div>
       <div className={classes.city}>
-        <Input
-          name="city"
-          type="text"
-          label="City"
-          register={register}
-          error={errors.email}
-        />
+        <Input name="city" type="text" label="City" register={register} error={null} />
       </div>
       <div className={classes.postalCode}>
-        <Input
-          name="postalcode"
-          type="text"
-          label="Postal Code"
-          register={register}
-          error={errors.email}
-        />
+        <Input name="postalcode" type="text" label="Postal Code" register={register} error={null} />
       </div>
       <div className={classes.country}>
-        <Input
-          name="country"
-          type="text"
-          label="Country"
-          register={register}
-          error={errors.email}
-        />
+        <Input name="country" type="text" label="Country" register={register} error={null} />
       </div>
       <div className={classes.phone}>
-        <Input
-          name="phone"
-          type="text"
-          label="Phone Number"
-          register={register}
-          error={errors.email}
-        />
+        <Input name="phone" type="text" label="Phone Number" register={register} error={null} />
       </div>
       <div className={classes.email}>
-        <Input
-          name="email"
-          type="text"
-          label="Email"
-          register={register}
-          error={errors.email}
-        />
+        <Input name="email" type="text" label="Email" register={register} error={errors.email} />
       </div>
-     
-      
     </div>
   )
 }
