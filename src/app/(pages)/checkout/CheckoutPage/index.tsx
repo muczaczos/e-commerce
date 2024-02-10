@@ -16,6 +16,7 @@ import { CheckoutItem } from '../CheckoutItem'
 import CustomCheckoutForm from '../CustomCheckoutForm'
 import PaymentMethods from './PaymentMethods'
 import ShippingDetails from './ShippingDetails'
+import ShippingMethods from './ShippingMethods'
 
 import { priceFromJSON } from '../../../_components/Price'
 
@@ -210,7 +211,7 @@ export const CheckoutPage: React.FC<{
             />
             <PaymentMethods method={method} setMethod={setMethod} />
           </div>
-          
+          <ShippingMethods />
         </>
       )}
       {cartIsEmpty && (
