@@ -6,16 +6,16 @@ import { RadioButton } from '../../../../_components/Radio'
 
 import classes from './index.module.scss'
 
-const PaymentMethods = ({
-  method,
-  setMethod,
-}) => {
+const PaymentMethods = ({method, setMethod}) => {
+
   const handlePaymentMethod = (value: string) => {
     setMethod(value)
   }
-
+  
   return (
-    <div className={classes.paymentOptions}>
+
+    <div className={classes.paymentSection}>
+      <h3 className={classes.payment}>Payment Methods</h3>
       <RadioButton
         label="Bank Trafser"
         value="transfer"

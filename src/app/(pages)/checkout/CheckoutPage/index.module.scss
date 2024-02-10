@@ -1,5 +1,13 @@
 @import '../../../_css/common';
 
+.sections {
+  display: flex;
+  column-gap: 24px;
+  @include small-break {
+    flex-direction: column;
+  }
+}
+
 .items {
   margin: 30px 0;
 }
@@ -68,4 +76,9 @@
     padding-bottom: 0;
     margin-bottom: 16px;
   }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }

@@ -60,3 +60,14 @@
   justify-content: space-between;
   width: 100%;
 }
+
+.shippingSection {
+  border: 1px solid var(--color-dark-50);
+  padding: 24px;
+  width: 50%;
+  @include small-break {
+    width: 100%;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+  }
+}
