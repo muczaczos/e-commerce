@@ -5,10 +5,10 @@ import { useSearchParams } from 'next/navigation'
 
 import { Button } from '../../../_components/Button'
 import { Message } from '../../../_components/Message'
+import { useAuth } from '../../../_providers/Auth'
 import { useCart } from '../../../_providers/Cart'
 
 import classes from './index.module.scss'
-import { useAuth } from '../../../_providers/Auth'
 
 export const OrderConfirmationPage: React.FC<{}> = () => {
   const searchParams = useSearchParams()
@@ -22,9 +22,9 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
   }, [clearCart])
 
   const { user } = useAuth()
-  
+
   return (
-    <div>
+    <div >
       {error ? (
         <Fragment>
           <Message error={error} />
@@ -41,31 +41,35 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
           </div>
         </Fragment>
       ) : (
-        <Fragment>
+        <Fragment >
           <h1>Thank you for your order!</h1>
           <p>
             {`Your order has been confirmed. You will receive an email confirmation shortly. Your order ID is ${orderID}.`}
           </p>
           <div className={classes.actions}>
-          {user && (
-            <>
-              <Button href={`/account/orders/${orderID}`} label="View order" appearance="primary" />
-              <Button
-                    href={`${process.env.NEXT_PUBLIC_SERVER_URL}/account/orders`}
-                    label="View all orders"
-                    appearance="secondary" 
-              />
-            </>
-          )}
-          {!user && (
-            <>
-              <Button
-                    href={`${process.env.NEXT_PUBLIC_SERVER_URL}/products`}
-                    label="Back To Shop"
-                    appearance="secondary" 
-              />
-            </>
-          )}
+            {user && (
+              <>
+                <Button
+                  href={`/account/orders/${orderID}`}
+                  label="View order"
+                  appearance="primary"
+                />
+                <Button
+                  href={`${process.env.NEXT_PUBLIC_SERVER_URL}/account/orders`}
+                  label="View all orders"
+                  appearance="secondary"
+                />
+              </>
+            )}
+            {!user && (
+              <>
+                <Button
+                  href={`${process.env.NEXT_PUBLIC_SERVER_URL}/products`}
+                  label="Back To Shop"
+                  appearance="secondary"
+                />
+              </>
+            )}
           </div>
         </Fragment>
       )}
