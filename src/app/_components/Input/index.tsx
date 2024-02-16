@@ -24,7 +24,7 @@ export const Input: React.FC<Props> = ({
   type = 'text',
   validate,
   disabled,
-  onChange
+  onChange,
 }) => {
   return (
     <div className={classes.inputWrap}>

@@ -13,7 +13,6 @@ import { CheckoutPage } from './CheckoutPage'
 import classes from './index.module.scss'
 
 export default async function Checkout() {
-  
   let settings: Settings | null = null
 
   try {

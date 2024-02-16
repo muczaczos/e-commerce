@@ -84,7 +84,7 @@ export const CartProvider = props => {
               const data = await res.json()
               return {
                 product: data,
-                quantity
+                quantity,
               }
             }),
           )
@@ -150,7 +150,7 @@ export const CartProvider = props => {
             ...item,
             // flatten relationship to product
             product: item?.product?.id,
-            quantity: typeof item?.quantity === 'number' ? item?.quantity : 0
+            quantity: typeof item?.quantity === 'number' ? item?.quantity : 0,
           }
         })
         .filter(Boolean) as CartItem[],
@@ -240,7 +240,7 @@ export const CartProvider = props => {
             : 0)
         )
       }, 0) || 0
-      
+
     const newTotal2 =
       cart?.items?.reduce((acc, item) => {
         return (

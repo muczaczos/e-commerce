@@ -46,7 +46,6 @@ export const CartPage: React.FC<{
                   {` to shop.`}
                 </Fragment>
               )}
-            
             </div>
           ) : (
             <div className={classes.cartWrapper}>
@@ -110,8 +109,8 @@ export const CartPage: React.FC<{
 
                 <Button
                   className={classes.checkoutButton}
-                  href={'/checkout' }
-                  label={ 'Checkout' }
+                  href={'/checkout'}
+                  label={'Checkout'}
                   appearance="primary"
                 />
               </div>

@@ -1,12 +1,15 @@
 'use client'
 
 import React, { Fragment, useEffect } from 'react'
+import axios from 'axios'
+import { sha1 } from 'js-sha1'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { Order, Settings } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { LoadingShimmer } from '../../../_components/LoadingShimmer'
+import { priceFromJSON } from '../../../_components/Price'
 import { useAuth } from '../../../_providers/Auth'
 import { useCart } from '../../../_providers/Cart'
 import { useTheme } from '../../../_providers/Theme'
@@ -18,11 +21,7 @@ import PaymentMethods from './PaymentMethods'
 import ShippingDetails from './ShippingDetails'
 import ShippingMethods from './ShippingMethods'
 
-import { priceFromJSON } from '../../../_components/Price'
-
 import classes from './index.module.scss'
-import { sha1 } from 'js-sha1'
-import axios from 'axios'
 
 export const CheckoutPage: React.FC<{
   settings: Settings
@@ -38,14 +37,14 @@ export const CheckoutPage: React.FC<{
   const hasMadePaymentIntent = React.useRef(false)
   const { theme } = useTheme()
 
-  const [ fullName, setFullName ] = React.useState()
-  const [ address, setAddress ] = React.useState()
-  const [ city, setCity] = React.useState()
-  const [ postalCode, setPostalCode ] = React.useState()
-  const [ phone, setPhone ] = React.useState()
-  const [ country, setCountry ] = React.useState()
-  const [ email, setEmail ] = React.useState()
-  const [ method, setMethod ] = React.useState()
+  const [fullName, setFullName] = React.useState()
+  const [address, setAddress] = React.useState()
+  const [city, setCity] = React.useState()
+  const [postalCode, setPostalCode] = React.useState()
+  const [phone, setPhone] = React.useState()
+  const [country, setCountry] = React.useState()
+  const [email, setEmail] = React.useState()
+  const [method, setMethod] = React.useState()
   const { cart, cartIsEmpty, cartTotal, totalAmount } = useCart()
 
   const handleSubmit = async () => {
@@ -196,13 +195,12 @@ export const CheckoutPage: React.FC<{
 
   return (
     <Fragment>
-
-{!cartIsEmpty && (
+      {!cartIsEmpty && (
         <>
           <div className={classes.sections}>
-            <ShippingDetails 
-              setFullName={setFullName} 
-              setAddress={setAddress} 
+            <ShippingDetails
+              setFullName={setFullName}
+              setAddress={setAddress}
               setCity={setCity}
               setPostalCode={setPostalCode}
               setCountry={setCountry}
@@ -275,12 +273,10 @@ export const CheckoutPage: React.FC<{
           </ul>
         </div>
       )}
-    <div className={classes.buttons}>
+      <div className={classes.buttons}>
         <Button label="Back to cart" href="/cart" appearance="secondary" />
-        <Button onClick={handleSubmit} label="Place the Order" appearance="primary"/>
-    </div>
+        <Button onClick={handleSubmit} label="Place the Order" appearance="primary" />
+      </div>
     </Fragment>
   )
 }
-
-

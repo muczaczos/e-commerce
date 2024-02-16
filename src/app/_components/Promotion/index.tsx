@@ -64,4 +64,3 @@ const StatBox = ({ label, value }: { label: string; value: number }) => (
     <p>{label}</p>
   </li>
 )
-

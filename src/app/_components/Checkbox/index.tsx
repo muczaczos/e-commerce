@@ -10,7 +10,13 @@ interface CheckboxProps {
   onClickHandler: (value: string) => void
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({key, label, value, isSelected, onClickHandler }) => {
+export const Checkbox: React.FC<CheckboxProps> = ({
+  key,
+  label,
+  value,
+  isSelected,
+  onClickHandler,
+}) => {
   const [isChecked, setIsChecked] = useState(isSelected)
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {

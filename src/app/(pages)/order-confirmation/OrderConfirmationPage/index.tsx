@@ -24,7 +24,7 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
   const { user } = useAuth()
 
   return (
-    <div >
+    <div>
       {error ? (
         <Fragment>
           <Message error={error} />
@@ -41,7 +41,7 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
           </div>
         </Fragment>
       ) : (
-        <Fragment >
+        <Fragment>
           <h1>Thank you for your order!</h1>
           <p>
             {`Your order has been confirmed. You will receive an email confirmation shortly. Your order ID is ${orderID}.`}

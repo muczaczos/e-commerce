@@ -10,9 +10,7 @@ import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
 import classes from './index.module.scss'
 
 const CartItem = ({ product, title, metaImage, qty, price, addItemToCart, sub }) => {
-
   const decrementQty = () => {
-    
     if (qty > 1) {
       qty = qty - 1
       sub = sub - Number(price)
@@ -20,15 +18,14 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart, sub })
       sub = Number(price)
       qty = 1
     }
-    addItemToCart({ product, quantity: Number(qty)})
-    
+    addItemToCart({ product, quantity: Number(qty) })
   }
 
   const incrementQty = () => {
     qty = qty + 1
     sub = sub + Number(price)
 
-    addItemToCart({ product, quantity: Number(qty)})
+    addItemToCart({ product, quantity: Number(qty) })
   }
 
   const enterQty = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,8 +46,7 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart, sub })
 
       <div className={classes.itemDetails}>
         <div className={classes.titleWrapper}>
-          <h6>{title}</h6>
-          ${price}
+          <h6>{title}</h6>${price}
         </div>
 
         <div className={classes.quantity}>
@@ -64,12 +60,7 @@ const CartItem = ({ product, title, metaImage, qty, price, addItemToCart, sub })
             />
           </div>
 
-          <input
-            type="text"
-            className={classes.quantityInput}
-            value={qty}
-            onChange={enterQty}
-          />
+          <input type="text" className={classes.quantityInput} value={qty} onChange={enterQty} />
 
           <div className={classes.quantityButton} onClick={incrementQty}>
             <Image
