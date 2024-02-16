@@ -34,7 +34,7 @@ const ShippingDetails = ({
 
   const handleName = e => {
     setFullName(e.target.value)
-    console.log(e.target.value)
+    //console.log(e.target.value)
   }
 
   const handleAddress = e => {

@@ -8,15 +8,11 @@ import { useRouter } from 'next/navigation'
 
 import { Order, Settings } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
-import { LoadingShimmer } from '../../../_components/LoadingShimmer'
 import { priceFromJSON } from '../../../_components/Price'
 import { useAuth } from '../../../_providers/Auth'
 import { useCart } from '../../../_providers/Cart'
 import { useTheme } from '../../../_providers/Theme'
-import cssVariables from '../../../cssVariables'
-import { CheckoutForm } from '../CheckoutForm'
 import { CheckoutItem } from '../CheckoutItem'
-import CustomCheckoutForm from '../CustomCheckoutForm'
 import PaymentMethods from './PaymentMethods'
 import ShippingDetails from './ShippingDetails'
 import ShippingMethods from './ShippingMethods'
@@ -48,9 +44,9 @@ export const CheckoutPage: React.FC<{
   const { cart, cartIsEmpty, cartTotal, totalAmount } = useCart()
 
   const handleSubmit = async () => {
-    console.log('dupa')
+    //console.log('dupa')
     if (method === 'gateway') {
-      console.log('1')
+      //console.log('1')
       let data = JSON.stringify({
         title: 'test nr 1',
         amount: {
@@ -107,13 +103,13 @@ export const CheckoutPage: React.FC<{
 
       axios(config)
         .then(response => {
-          console.log(JSON.stringify(response.data))
+          //console.log(JSON.stringify(response.data))
         })
         .catch(error => {
-          console.log('dupa')
+          //console.log('dupa')
         })
     } else if (method === 'transfer') {
-      console.log('1')
+      //console.log('1')
       const orderReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders`, {
         method: 'POST',
         credentials: 'include',
@@ -148,9 +144,9 @@ export const CheckoutPage: React.FC<{
         doc: Order
       } = await orderReq.json()
       router.push(`/order-confirmation?order_id=${doc.id}`)
-      console.log('end transfer')
+      //console.log('end transfer')
     } else if (method === 'eth') {
-      console.log('dupa eth')
+      //console.log('dupa eth')
     }
   }
 
