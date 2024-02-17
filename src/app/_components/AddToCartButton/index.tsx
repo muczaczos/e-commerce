@@ -10,12 +10,13 @@ import { Button, Props } from '../Button'
 import classes from './index.module.scss'
 
 export const AddToCartButton: React.FC<{
+  subtotal: string
   product: Product
   quantity?: number
   className?: string
   appearance?: Props['appearance']
 }> = props => {
-  const { product, quantity = 1, className, appearance = 'primary' } = props
+  const {subtotal, product, quantity = 1, className, appearance = 'primary' } = props
 
   const { cart, addItemToCart, isProductInCart, hasInitializedCart } = useCart()
 
@@ -45,6 +46,7 @@ export const AddToCartButton: React.FC<{
         !isInCart
           ? () => {
               addItemToCart({
+                subtotal,
                 product,
                 quantity,
               })
