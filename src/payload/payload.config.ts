@@ -40,6 +40,7 @@ dotenv.config({
 })
 
 export default buildConfig({
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin: {
     user: Users.slug,
     bundler: webpackBundler(), // bundler-config
@@ -56,6 +57,18 @@ export default buildConfig({
         ...config,
         resolve: {
           ...config.resolve,
+          fallback: {
+            util: require.resolve('util/'),
+            crypto: require.resolve('crypto-browserify'),
+            fs: false,
+            tls: false,
+            net: false,
+            path: false,
+            zlib: false,
+            http: false,
+            https: false,
+            stream: require.resolve('stream-browserify'),
+          },
           alias: {
             ...config.resolve?.alias,
             dotenv: path.resolve(__dirname, './dotenv.js'),
@@ -80,7 +93,6 @@ export default buildConfig({
     url: process.env.DATABASE_URI,
   }),
   // database-adapter-config-end
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Products, Orders, Media, Categories, Users],
   globals: [Settings, Header, Footer],
   typescript: {

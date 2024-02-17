@@ -1,27 +1,16 @@
 import React, { Fragment } from 'react'
-import Link from 'next/link'
 
 import { Product } from '../../../payload/payload-types'
 import { AddToCartButton } from '../../_components/AddToCartButton'
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
-import { Message } from '../../_components/Message'
-import { Price } from '../../_components/Price'
-import RichText from '../../_components/RichText'
 
 import classes from './index.module.scss'
 
 export const ProductHero: React.FC<{
   product: Product
 }> = ({ product }) => {
-  const {
-    id,
-    stripeProductID,
-    title,
-    categories,
-    price,
-    meta: { image: metaImage, description } = {},
-  } = product
+  const { title, categories, price, meta: { image: metaImage, description } = {} } = product
   return (
     <Gutter className={classes.productHero}>
       <div className={classes.mediaWrapper}>
@@ -62,7 +51,7 @@ export const ProductHero: React.FC<{
           <h6>Description</h6>
           <p>{description}</p>
         </div>
-        <AddToCartButton product={product} className={classes.addToCartButton} />
+        <AddToCartButton subtotal={''} product={product} className={classes.addToCartButton} />
       </div>
     </Gutter>
   )
